@@ -41,7 +41,7 @@ const DEFAULT_WEAPP_OPTIONS = {
 
 let targetUnit
 
-module.exports = postcss.plugin('postcss-px-transform', function (options) {
+module.exports = postcss.plugin('postcss-px2rpx-transform', function (options) {
   options = Object.assign(DEFAULT_WEAPP_OPTIONS, options || {})
 
   switch (options.platform) {
@@ -74,7 +74,7 @@ module.exports = postcss.plugin('postcss-px-transform', function (options) {
   return function (css) {
     for (let i = 0; i < css.nodes.length; i++) {
       if (css.nodes[i].type === 'comment') {
-        if (css.nodes[i].text === 'postcss-px-transform disable') {
+        if (css.nodes[i].text === 'postcss-px2rpx-transform disable') {
           return
         } else {
           break
@@ -85,10 +85,10 @@ module.exports = postcss.plugin('postcss-px-transform', function (options) {
     // delete code between comment in RN
     if (options.platform === 'rn') {
       css.walkComments(comment => {
-        if (comment.text === 'postcss-px-transform rn eject enable') {
+        if (comment.text === 'postcss-px2rpx-transform rn eject enable') {
           let next = comment.next()
           while (next) {
-            if (next.type === 'comment' && next.text === 'postcss-px-transform rn eject disable') {
+            if (next.type === 'comment' && next.text === 'postcss-px2rpx-transform rn eject disable') {
               break
             }
             const temp = next.next()
