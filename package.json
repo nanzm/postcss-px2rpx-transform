@@ -1,7 +1,7 @@
 {
   "name": "postcss-px2rpx-transform",
   "description": "postcss plugin px2rpx uni-app mpvue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "px",
     "postcss",
